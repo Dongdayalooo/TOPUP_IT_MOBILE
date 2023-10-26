@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEditHike">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@color/white"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:orientation="vertical">
+        <!--hike Name-->
+        <EditText
+            android:id="@+id/hikeNameEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Name"
+            android:inputType="textLongMessage"
+            android:textColor="@color/black" />
+        <!--Hile Location-->
+        <EditText
+            android:id="@+id/hikeLocationEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Location"
+            android:inputType="textLongMessage"
+            android:textColor="@color/black" />
+        <!--Hile hikeDate-->
+        <EditText
+            android:id="@+id/hikeDateEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Date"
+            android:inputType="text|datetime"
+            android:textColor="@color/black" />
+        <!--Hile hikeLength-->
+        <EditText
+            android:id="@+id/hikeLengthEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Length"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black" />
+        <!--Hile hikeTime-->
+        <EditText
+            android:id="@+id/hikeTimeEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Time"
+            android:inputType="text|datetime"
+            android:textColor="@color/black" />
+        <!--Hile hikeDifficultyLevelEt-->
+        <EditText
+            android:id="@+id/hikeDifficultyLevelEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Difficulty Level"
+            android:inputType="textAutoComplete"
+            android:textColor="@color/black" />
+        <!--Hile hikeStoppingPoints-->
+        <EditText
+            android:id="@+id/hikeStopPointEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Stop Points"
+            android:inputType="textLongMessage"
+            android:textColor="@color/black" />
+        <!--Hile radioGroupParking-->
+        <RadioGroup
+            android:id="@+id/radioGroupParking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioBtnYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Có" />
+
+            <RadioButton
+                android:id="@+id/radioBtnNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Không" />
+        </RadioGroup>
+        <!--Hile hikeStoppingPoints-->
+        <EditText
+            android:id="@+id/hikeDescriptionEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hike Description"
+            android:inputType="textLongMessage"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <!--    fab button for add Hike in app-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/teal_200"
+        android:contentDescription="TODO"
+        android:src="@drawable/baseline_playlist_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</RelativeLayout>
