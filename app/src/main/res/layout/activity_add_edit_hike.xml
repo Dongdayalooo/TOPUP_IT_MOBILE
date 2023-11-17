@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/chaybo4"
     tools:context=".AddEditHike">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -28,92 +29,258 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:layout_marginTop="70dp"
         android:orientation="vertical">
         <!--hike Name-->
-        <EditText
-            android:id="@+id/hikeNameEt"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hike Name"
-            android:inputType="textLongMessage"
-            android:textColor="@color/black" />
-        <!--Hile Location-->
-        <EditText
-            android:id="@+id/hikeLocationEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hike Location"
-            android:inputType="textLongMessage"
-            android:textColor="@color/black" />
-        <!--Hile hikeDate-->
-        <EditText
-            android:id="@+id/hikeDateEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hike Date"
-            android:inputType="text|datetime"
-            android:textColor="@color/black" />
-        <!--Hile hikeLength-->
-        <EditText
-            android:id="@+id/hikeLengthEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hike Length"
-            android:inputType="numberDecimal"
-            android:textColor="@color/black" />
-        <!--Hile hikeTime-->
-        <EditText
-            android:id="@+id/hikeTimeEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hike Time"
-            android:inputType="text|datetime"
-            android:textColor="@color/black" />
-        <!--Hile hikeDifficultyLevelEt-->
-        <EditText
-            android:id="@+id/hikeDifficultyLevelEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hike Difficulty Level"
-            android:inputType="textAutoComplete"
-            android:textColor="@color/black" />
-        <!--Hile hikeStoppingPoints-->
-        <EditText
-            android:id="@+id/hikeStopPointEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hike Stop Points"
-            android:inputType="textLongMessage"
-            android:textColor="@color/black" />
-        <!--Hile radioGroupParking-->
-        <RadioGroup
-            android:id="@+id/radioGroupParking"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioBtnYes"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Có" />
+                android:layout_weight="1"
+                android:text="Hike Name:"
+                android:textStyle="bold"
+                android:textSize="17dp" />
 
-            <RadioButton
-                android:id="@+id/radioBtnNo"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/hikeNameEt"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Không" />
-        </RadioGroup>
-        <!--Hile hikeStoppingPoints-->
-        <EditText
-            android:id="@+id/hikeDescriptionEt"
+                android:layout_weight="2"
+                android:hint="Hike Name"
+                android:inputType="textLongMessage"
+                android:textColor="@color/black" />
+        </LinearLayout>
+        <!--Hike Location-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Hike Description"
-            android:inputType="textLongMessage"
-            android:textColor="@color/black" />
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hike Location:"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/hikeLocationEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Hike Location"
+                android:inputType="textLongMessage"
+                android:textColor="@color/black" />
+        </LinearLayout>
+        <!--Hile Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hike Date (dd/mm/yyyy):"
+                android:textStyle="bold"
+                android:textSize="17dp"/>
+
+            <EditText
+                android:id="@+id/hikeDateEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Hike Date"
+                android:inputType="none"
+                android:focusable="false"
+                android:onClick="showDatePickerDialog"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+        <!--Hike Length-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="Hike Length (km):"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/hikeLengthEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Hike Length"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!--Hike Time-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="Hike Time (hh:mm):"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/hikeTimeEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Hike Time"
+                android:onClick="showTimePickerDialog"
+                android:inputType="text|datetime"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!--Hike Difficulty Level-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="Hike Difficulty Level:"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/hikeDifficultyLevelEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Hike Difficulty Level"
+                android:inputType="textAutoComplete"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!-- Hike Stopping Points -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hike Stop Point:"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/hikeStopPointEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Hike Stop Points"
+                android:inputType="textLongMessage"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!--Hike radioGroupParking-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:text="Hike Parking:"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupParking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioBtnYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/radioBtnNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!--Hile Description-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hike Description:"
+                android:textStyle="bold"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/hikeDescriptionEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Hike Description"
+                android:inputType="textLongMessage"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addObservationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Obs"
+            android:onClick="openObservationActivity" />
+        <!-- Hike Observations -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hike Observations:"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:padding="10dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/observationRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/observation_list_item" />
     </LinearLayout>
 
     <!--    fab button for add Hike in app-->

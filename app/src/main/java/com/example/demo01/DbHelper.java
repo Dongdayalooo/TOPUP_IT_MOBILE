@@ -25,68 +25,54 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //upgrade tale if any structure change in db
-
         //drop table if exists
         db.execSQL("DROP TABLE IF EXISTS " + Hike.TABLE_NAME);
-
         //create table again
         onCreate(db);
     }
 
 
     //Insert Function to insert data in database
-    public long insertHike(String hikeName, String hikeLocation, String hikeDate, String hikeLength, String hikeTime, String hikeStopPoint, String hikeDifficultyLevel, boolean hikeGroupParking, String hikeDescription) {
-
+    public long insertHike(String hikeName, String hikeLocation, String hikeDate, String hikeLength, String hikeTime,
+                           String hikeStopPoint, String hikeDifficultyLevel, boolean hikeGroupParking, String hikeDescription) {
         //get writable database to write data on db
         SQLiteDatabase db = this.getWritableDatabase();
-
-        // create ContentValues class object to save data
-        ContentValues contentValues = new ContentValues();
-
+        // tạo đối tượng lớp ContentValues để lưu data
+        ContentValues contentVl = new ContentValues();
         // id will save automatically as we write query
-        contentValues.put(Hike.C_HikeName, hikeName);
-        contentValues.put(Hike.C_HikeLocation, hikeLocation);
-        contentValues.put(Hike.C_HikeDate, hikeDate);
-        contentValues.put(Hike.C_HikeLength, hikeLength);
-        contentValues.put(Hike.C_HikeTime, hikeTime);
-        contentValues.put(Hike.C_HikeStopPoint, hikeStopPoint);
-        contentValues.put(Hike.C_HikeDifficultyLevel, hikeDifficultyLevel);
-        contentValues.put(Hike.C_GroupParking, hikeGroupParking ? 1 : 0); // Convert boolean to integer
-        contentValues.put(Hike.C_HikeDescription, hikeDescription);
-
-        //insert data in row, It will return id of record
-        long id = db.insert(Hike.TABLE_NAME, null, contentValues);
-
-        //close db
+        contentVl.put(Hike.C_HikeName, hikeName);
+        contentVl.put(Hike.C_HikeLocation, hikeLocation);
+        contentVl.put(Hike.C_HikeDate, hikeDate);
+        contentVl.put(Hike.C_HikeLength, hikeLength);
+        contentVl.put(Hike.C_HikeTime, hikeTime);
+        contentVl.put(Hike.C_HikeStopPoint, hikeStopPoint);
+        contentVl.put(Hike.C_HikeDifficultyLevel, hikeDifficultyLevel);
+        contentVl.put(Hike.C_GroupParking, hikeGroupParking ? 1 : 0); // Convert boolean to integer
+        contentVl.put(Hike.C_HikeDescription, hikeDescription);
+        //insert data in row, nó sẽ trả về id của bản ghi
+        long id = db.insert(Hike.TABLE_NAME, null, contentVl);
         db.close();
-
-        //return id
         return id;
     }
 
     //update Funccton to update data in database
-    public void updateHike(String id, String hikeName, String hikeLocation, String hikeDate, String hikeLength, String hikeTime, String hikeStopPoint, String hikeDifficultyLevel, boolean hikeGroupParking, String hikeDescription) {
-
+    public void updateHike(String id, String hikeName, String hikeLocation, String hikeDate, String hikeLength,
+                           String hikeTime, String hikeStopPoint, String hikeDifficultyLevel, boolean hikeGroupParking, String hikeDescription) {
         //get writable database to write data on db
         SQLiteDatabase db = this.getWritableDatabase();
-
         // create ContentValues class object to save data
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put(Hike.C_HikeName, hikeName);
-        contentValues.put(Hike.C_HikeLocation, hikeLocation);
-        contentValues.put(Hike.C_HikeDate, hikeDate);
-        contentValues.put(Hike.C_HikeLength, hikeLength);
-        contentValues.put(Hike.C_HikeTime, hikeTime);
-        contentValues.put(Hike.C_HikeStopPoint, hikeStopPoint);
-        contentValues.put(Hike.C_HikeDifficultyLevel, hikeDifficultyLevel);
-        contentValues.put(Hike.C_GroupParking, hikeGroupParking ? 1 : 0); // Convert boolean to integer
-        contentValues.put(Hike.C_HikeDescription, hikeDescription);
-
-        //insert data in row, It will return id of record
-        db.update(Hike.TABLE_NAME, contentValues, Hike.C_ID + "=?",new String[]{id} );
-
-        //close db
+        ContentValues contentVl = new ContentValues();
+        contentVl.put(Hike.C_HikeName, hikeName);
+        contentVl.put(Hike.C_HikeLocation, hikeLocation);
+        contentVl.put(Hike.C_HikeDate, hikeDate);
+        contentVl.put(Hike.C_HikeLength, hikeLength);
+        contentVl.put(Hike.C_HikeTime, hikeTime);
+        contentVl.put(Hike.C_HikeStopPoint, hikeStopPoint);
+        contentVl.put(Hike.C_HikeDifficultyLevel, hikeDifficultyLevel);
+        contentVl.put(Hike.C_GroupParking, hikeGroupParking ? 1 : 0); // Convert boolean to integer
+        contentVl.put(Hike.C_HikeDescription, hikeDescription);
+        //insert data in row, nó sẽ trả về id của bản ghi
+        db.update(Hike.TABLE_NAME, contentVl, Hike.C_ID + "=?",new String[]{id} );
         db.close();
     }
 
@@ -99,16 +85,16 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     //delete all data
-    public void deleteAllHike() {
-        //get writable database
-        SQLiteDatabase db = getWritableDatabase();
+//    public void deleteAllHike() {
+//        //get writable database
+//        SQLiteDatabase db = getWritableDatabase();
+//
+//        //query for delete
+//        db.execSQL("DELETE FROM " + Hike.TABLE_NAME);
+//        db.close();
+//    }
 
-        //query for delete
-        db.execSQL("DELETE FROM " + Hike.TABLE_NAME);
-        db.close();
-    }
-
-    //get data
+    //get data hike
     public ArrayList<ModelHike> getAllData() {
         //create arrayList
         ArrayList<ModelHike> arrayList = new ArrayList<>();

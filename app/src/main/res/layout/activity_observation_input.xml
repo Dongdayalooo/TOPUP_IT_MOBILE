@@ -1,0 +1,56 @@
+<!-- observation_input_layout.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ObservationInput"
+    android:background="@drawable/chaybo5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/observationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Observation"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/observationTimeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Observation Time"
+            android:clickable="true"
+            android:onClick="showTimePickerDialog"
+            android:inputType="datetime" />
+
+        <EditText
+            android:id="@+id/additionalCommentsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Additional Comments"
+            android:inputType="text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+        <Button
+            android:id="@+id/observationSaveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="230dp"
+            android:text="Save" />
+    </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/chaybo3"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -26,7 +26,6 @@
         android:layout_marginTop="50dp"
         tools:listitem="@layout/new_hike_item"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
 
     <!--    fab button for add Hike in app-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

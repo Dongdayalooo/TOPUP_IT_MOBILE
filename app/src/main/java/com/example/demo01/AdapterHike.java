@@ -17,18 +17,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class AdapterHike extends RecyclerView.Adapter<AdapterHike.HikeViewHolder>{
-
     private Context context;
     private ArrayList<ModelHike> hikeList;
     private DbHelper dbHelper;
-
     //add constructor
     public AdapterHike(Context context, ArrayList<ModelHike> hikeList) {
         this.context = context;
         this.hikeList = hikeList;
         dbHelper = new DbHelper(context);
     }
-
     @NonNull
     @Override
     public HikeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,7 +33,6 @@ public class AdapterHike extends RecyclerView.Adapter<AdapterHike.HikeViewHolder
         HikeViewHolder vh = new HikeViewHolder(view);
         return vh;
     }
-
     @Override
     public void onBindViewHolder(@NonNull HikeViewHolder holder, int position) {
         ModelHike modelHike = hikeList.get(position);
@@ -57,20 +53,21 @@ public class AdapterHike extends RecyclerView.Adapter<AdapterHike.HikeViewHolder
         holder.hikeName.setText(hikeName);
 
         //handle click listener
-        holder.hikeName.setOnClickListener(new View.OnClickListener(){
+//        holder.hikeName.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         //handle item click and show hike details
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and initialize intent to move to HikeDetails activity with hike ID as reference
                 Intent intent = new Intent(context, HikeDetails.class);
-                intent.putExtra("Id", id); // Make sure you are passing the correct key
+                intent.putExtra("Id", id);
                 context.startActivity(intent);
             }
         });
@@ -94,7 +91,6 @@ public class AdapterHike extends RecyclerView.Adapter<AdapterHike.HikeViewHolder
                 intent.putExtra("HIKEGROUPPARKING",hikeGroupParking);
                 intent.putExtra("HIKEDESCRIPTION",hikeDescription);
 
-                //pass a boolean data to define it is for edit purpose
                 intent.putExtra("isEditMode", true);
                 //start intent
                 context.startActivity(intent);
@@ -119,7 +115,6 @@ public class AdapterHike extends RecyclerView.Adapter<AdapterHike.HikeViewHolder
                         ((MainActivity) context).onResume();
                     }
                 });
-
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

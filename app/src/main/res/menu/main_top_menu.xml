@@ -7,10 +7,10 @@
         android:icon="@drawable/baseline_search_24"
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
-    <item
-        android:id="@+id/deleteAllHike"
-        android:title="Delete All"
-        android:icon="@drawable/baseline_delete_sweep_24"
-        app:showAsAction="always"/>
+<!--    <item-->
+<!--        android:id="@+id/deleteAllHike"-->
+<!--        android:title="Delete All"-->
+<!--        android:icon="@drawable/baseline_delete_sweep_24"-->
+<!--        app:showAsAction="always"/>-->
 
 </menu>

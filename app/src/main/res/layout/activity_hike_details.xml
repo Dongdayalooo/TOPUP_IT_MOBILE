@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/chaybo1"
     tools:context=".HikeDetails">
 
     <LinearLayout
@@ -11,11 +12,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher" />
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@mipmap/ic_launcher" />-->
 
         <TextView
             android:id="@+id/tv_hikeName"
@@ -23,6 +24,7 @@
             android:layout_height="wrap_content"
             tools:text="Hike Name"
             android:textSize="40dp"
+            android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
@@ -31,17 +33,19 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:stretchColumns="2">
+            android:padding="0dp"
+            android:stretchColumns="1">
             <TableRow>
                 <TextView
                     android:text="Hike Location:"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_hikeLocation"
                     tools:text="aaaa"
-                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:layout_marginStart="10dp"/>
@@ -49,12 +53,14 @@
             <TableRow>
                 <TextView
                     android:text="Hike Date:"
-                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_hikeDate"
                     tools:text="dd/mm/yy"
-                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:layout_marginStart="10dp"/>
@@ -62,12 +68,14 @@
             <TableRow>
                 <TextView
                     android:text="Hike Length (Km):"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_hikeLength"
                     tools:text="50"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:layout_marginStart="10dp"/>
@@ -75,12 +83,14 @@
             <TableRow>
                 <TextView
                     android:text="Hike Time:"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_hikeTime"
                     tools:text="05:00"
-                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:layout_marginStart="10dp"/>
@@ -88,12 +98,14 @@
             <TableRow>
                 <TextView
                     android:text="Hike Difficulty Leve:"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_hikeDifficultyLevel"
                     tools:text="aaaa"
-                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:layout_marginStart="10dp"/>
@@ -101,12 +113,14 @@
             <TableRow>
                 <TextView
                     android:text="Hike Stop Point:"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_hikeStopPoint"
                     tools:text="aaaa"
-                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:layout_marginStart="10dp"/>
@@ -114,7 +128,9 @@
             <TableRow>
                 <TextView
                     android:text="Hike Parking:"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
                 <RadioGroup
                     android:id="@+id/radioGroupParking"
@@ -126,38 +142,58 @@
                         android:id="@+id/radioBtnYes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Có" />
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:text="Yes" />
 
                     <RadioButton
                         android:id="@+id/radioBtnNo"
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Không" />
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:text="No" />
                 </RadioGroup>
             </TableRow>
             <TableRow>
                 <TextView
                     android:text="Hike Description:"
-                    android:textSize="14dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/tv_hikeDescription"
                     tools:text="aaaa"
-                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:layout_marginLeft="10dp" />
             </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Hike Observation:"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+            </TableRow>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/observationRv"
+                android:layout_width="match_parent"
+                android:layout_height="227dp"
+                android:layout_marginTop="5dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/observation_list_item" />
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_margin="10dp" />
         </TableLayout>
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:layout_margin="16dp" />
-
 
     </LinearLayout>
 

@@ -18,38 +18,29 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
     //view
     private FloatingActionButton fab;
-    private RecyclerView hikeRv;
 
-    //db
-    private DbHelper dbHelper;
     //adapter
     private AdapterHike adapterHike;
-
     //action bar
     private ActionBar actionBar;
-
+    private RecyclerView hikeRv;
+    //db
+    private DbHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Add the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         actionBar = getSupportActionBar();
-//        actionBar.setTitle("List Hike");
-
         //init db
         dbHelper = new DbHelper(this);
-
         //initialization
         fab = findViewById(R.id.fab);
         hikeRv = findViewById(R.id.hikeRv);
         hikeRv.setHasFixedSize(true);
-
-
-        //add listener
+        //add btn
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -78,10 +69,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_top_menu, menu);
-
         //get search item for menu
         MenuItem item = menu.findItem(R.id.searchHike);
-        //search area
+        //khu vực search
         SearchView searchView = (SearchView) item.getActionView();
         //set max value for with
         searchView.setMaxWidth(Integer.MAX_VALUE);
@@ -91,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 searchHike(query);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 searchHike(newText);
@@ -100,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         });
         return true;
     }
-
     private void searchHike(String query) {
         adapterHike = new AdapterHike(this,dbHelper.getSearchHike(query));
         hikeRv.setAdapter(adapterHike);

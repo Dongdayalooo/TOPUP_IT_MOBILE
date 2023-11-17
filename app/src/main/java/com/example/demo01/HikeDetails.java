@@ -2,6 +2,8 @@ package com.example.demo01;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,6 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class HikeDetails extends AppCompatActivity {
 
     //view
@@ -22,20 +26,27 @@ public class HikeDetails extends AppCompatActivity {
     //db halper
     private DbHelper dbHelper;
 
+
+    //test
+    private Observation observationdb;
+    private ObservationAdapter observationAdapter;
+    private RecyclerView observationRv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hike_details);
-
-        // Khởi tạo đối tượng dbHelper
+        // init dbHelper hike
         dbHelper = new DbHelper(this);
-
+        //init db observation
+        observationdb = new Observation(this);
+        observationRv = findViewById(R.id.observationRv);
+        // loadDataObsById (observation)
+        loadDataObsById();
         //get data from intents
         Intent intent = getIntent();
         id = intent.getStringExtra("Id");
-
-
-        //init view
+        //init view hike
         tv_hikeName = findViewById(R.id.tv_hikeName);
         tv_hikeLocation = findViewById(R.id.tv_hikeLocation);
         tv_hikeDate = findViewById(R.id.tv_hikeDate);
@@ -45,11 +56,8 @@ public class HikeDetails extends AppCompatActivity {
         tv_hikeStopPoint = findViewById(R.id.tv_hikeStopPoint);
         radioGroupParking = findViewById(R.id.radioGroupParking);
         tv_hikeDescription = findViewById(R.id.tv_hikeDescription);
-
+        //loadDatabyId Hike
         loadDataById();
-
-
-        //btn back
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,16 +69,15 @@ public class HikeDetails extends AppCompatActivity {
 
     private void loadDataById() {
 
-        //get data from database
-        //query for find data by id
+        // lấy dữ liệu từ cơ sở dữ liệu
+        //truy vấn tìm dữ liệu theo id
         String selectQuery = "SELECT * FROM " + Hike.TABLE_NAME + " WHERE " + Hike.C_ID + " = '" + id + "'";
-
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
             do {
-                //get data
+                //get data hike
                 String hikeName = cursor.getString(cursor.getColumnIndexOrThrow(Hike.C_HikeName));
                 String hikeLocation = cursor.getString(cursor.getColumnIndexOrThrow(Hike.C_HikeLocation));
                 String hikeDate = cursor.getString(cursor.getColumnIndexOrThrow(Hike.C_HikeDate));
@@ -80,8 +87,7 @@ public class HikeDetails extends AppCompatActivity {
                 String hikeDifficultyLevel = cursor.getString(cursor.getColumnIndexOrThrow(Hike.C_HikeDifficultyLevel));
                 boolean groupParking = cursor.getInt(cursor.getColumnIndexOrThrow(Hike.C_GroupParking)) == 1;
                 String hikeDescription = cursor.getString(cursor.getColumnIndexOrThrow(Hike.C_HikeDescription));
-
-                //set data
+                //set data hike
                 tv_hikeName.setText(hikeName);
                 tv_hikeLocation.setText(hikeLocation);
                 tv_hikeDate.setText(hikeDate);
@@ -98,7 +104,19 @@ public class HikeDetails extends AppCompatActivity {
 
             } while (cursor.moveToNext());
         }
-//        cursor.close();
-//        db.close();
+        cursor.close();
+        db.close();
     }
+
+    private void loadDataObsById() {
+        // Các khai báo khác
+        observationAdapter = new ObservationAdapter(this, observationdb.getAllObservationsForHike(id));
+        observationRv.setAdapter(observationAdapter);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDataObsById(); //refresh data
+    }
+
 }
